@@ -46,7 +46,7 @@ export default function () {
       headers: {
         Accept: `text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716/dashboard`;
@@ -58,7 +58,7 @@ export default function () {
       headers: {
         Accept: `text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716/dashboard`;
@@ -72,14 +72,14 @@ export default function () {
         "content-type": `application/json`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716/dashboard`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/api/graphql`;
     resp = http.request(
       "POST",
       url,
-      `{"query":"\n    query GetTaxpayerTins {\n  getTaxpayerTins {\n    bpStatus\n    tin\n    legalNameEn\n    legalNameAr\n  }\n}\n    ","operationName":"GetTaxpayerTins"}`,
+      `{"query":"\\n    query GetTaxpayerTins {\\n  getTaxpayerTins {\\n    bpStatus\\n    tin\\n    legalNameEn\\n    legalNameAr\\n  }\\n}\\n    ","operationName":"GetTaxpayerTins"}`,
       params,
     );
 
@@ -91,14 +91,14 @@ export default function () {
         "content-type": `application/json`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716/dashboard`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/api/graphql`;
     resp = http.request(
       "POST",
       url,
-      `{"query":"\n    query GetTaxpayerTasks($tin: String) {\n  getTaxpayerTasks(tin: $tin) {\n    applicationId\n    priority\n    status\n    submissionTime\n    tin\n    taxpayer {\n      avatarUrl\n      email\n      name\n      userId\n    }\n    type\n  }\n}\n    ","variables":{"tin":"5001945716"},"operationName":"GetTaxpayerTasks"}`,
+      `{"query":"\\n    query GetTaxpayerTasks($tin: String) {\\n  getTaxpayerTasks(tin: $tin) {\\n    applicationId\\n    priority\\n    status\\n    submissionTime\\n    tin\\n    taxpayer {\\n      avatarUrl\\n      email\\n      name\\n      userId\\n    }\\n    type\\n  }\\n}\\n    ","variables":{"tin":"5001945716"},"operationName":"GetTaxpayerTasks"}`,
       params,
     );
 
@@ -110,14 +110,14 @@ export default function () {
         "content-type": `application/json`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716/dashboard`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/api/graphql`;
     resp = http.request(
       "POST",
       url,
-      `{"query":"\n    query WebGetTaxpayerPillar2Registrations($taxpayerTin: String!) {\n  getTaxpayerPillar2Registrations(taxpayerTin: $taxpayerTin) {\n    registrationId\n    fiscalYear\n  }\n}\n    ","variables":{"taxpayerTin":"5001945716"},"operationName":"WebGetTaxpayerPillar2Registrations"}`,
+      `{"query":"\\n    query WebGetTaxpayerPillar2Registrations($taxpayerTin: String!) {\\n  getTaxpayerPillar2Registrations(taxpayerTin: $taxpayerTin) {\\n    registrationId\\n    fiscalYear\\n  }\\n}\\n    ","variables":{"taxpayerTin":"5001945716"},"operationName":"WebGetTaxpayerPillar2Registrations"}`,
       params,
     );
 
@@ -132,7 +132,7 @@ export default function () {
         Accept: `*/*`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716/dashboard`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/en?_rsc=6hz3F_OOekX4Zx8k`;
@@ -149,7 +149,7 @@ export default function () {
         Accept: `*/*`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716/dashboard`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/5001945716/services/pillar2-registration/guide?_rsc=6hz3F_OOekX4Zx8k`;
@@ -166,7 +166,7 @@ export default function () {
         Accept: `*/*`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716/dashboard`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/5001945716/services/pillar2-registration/details?_rsc=6hz3F_OOekX4Zx8k`;
@@ -183,7 +183,7 @@ export default function () {
         Accept: `*/*`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716/dashboard`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/5001945716/services/pillar2-registration/2F5D63D4-F176-F111-AC9A-7C1E5239240F?_rsc=6hz3F_OOekX4Zx8k`;
@@ -199,7 +199,7 @@ export default function () {
         Accept: `*/*`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716/dashboard`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/5001945716/services/pillar2-registration/2F5D63D4-F176-F111-AC9A-7C1E5239240F?_rsc=Zun-QtzUGao0va6Y`;
@@ -213,14 +213,14 @@ export default function () {
         "content-type": `application/json`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716/services/pillar2-registration/2F5D63D4-F176-F111-AC9A-7C1E5239240F`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/api/graphql`;
     resp = http.request(
       "POST",
       url,
-      `{"query":"\n    query WebGetPillar2Registration($id: ID!) {\n  getPillar2Registration(id: $id) {\n    ...Pillar2RegistrationWebFields\n  }\n}\n    fragment TaxpayerFields on Taxpayer {\n  avatarUrl\n  email\n  name\n  userId\n}\nfragment TaxOfficerFields on TaxOfficer {\n  avatarUrl\n  email\n  level\n  name\n  officerId\n  taxRegime\n  userId\n}\nfragment UploadedFileFields on UploadedFile {\n  documentId\n  fileName\n  url\n}\nfragment Pillar2RegistrationBaseFields on Pillar2Registration {\n  applicant {\n    ...TaxpayerFields\n  }\n  createdAt\n  expireAt\n  id\n  status\n  updatedAt\n}\nfragment Pillar2RegistrationDfeFields on Dfe {\n  jurisdiction {\n    id\n    code\n    countryNameEn\n    countryNameAr\n    isQatar\n  }\n  legalNameAr\n  legalNameEn\n  tin\n}\nfragment Pillar2RegistrationDleFields on Dle {\n  authDocs {\n    ...UploadedFileFields\n  }\n  legalNameAr\n  legalNameEn\n  taxRegime\n  tin\n}\nfragment Pillar2RegistrationEntityFields on GroupEntity {\n  isDle\n  isDfe\n  isUpe\n  hasIirTaxOblig\n  legalNameAr\n  legalNameEn\n  taxRegime\n  tin\n}\nfragment Pillar2RegistrationGroupFields on Pillar2Group {\n  groupType\n  isDleUpe\n  isUpeFileGIR\n  isSbsSafeHarbor\n  isDleDfe\n  hasDFE\n  name\n  reportingFyEndDate\n  reportingFyStartDate\n  tin\n  upe {\n    ...Pillar2RegistrationUpeFields\n  }\n}\nfragment Pillar2RegistrationOtherUpeFields on Pillar2RegistrationListItem {\n  fiscalYear\n  groupTin\n  registrationId\n  groupNameAr\n  groupNameEn\n}\nfragment Pillar2RegistrationReviewCommentFields on Pillar2ReviewComment {\n  commentId\n  commentEn\n  commentAr\n}\nfragment Pillar2RegistrationReviewResultFields on Pillar2Review {\n  comment {\n    ...Pillar2RegistrationReviewCommentFields\n  }\n  commentDetails\n  commentsOnFields {\n    comment\n    fieldName\n  }\n  decision\n  order\n  reassignTo {\n    ...TaxOfficerFields\n  }\n  reviewLevel\n  reviewedAt\n  reviewer {\n    ...TaxOfficerFields\n  }\n}\nfragment Pillar2RegistrationUpeFields on Upe {\n  jurisdiction {\n    id\n    code\n    countryNameEn\n    countryNameAr\n    isQatar\n  }\n  legalNameAr\n  legalNameEn\n  taxRegime\n  tin\n}\nfragment Pillar2RegistrationWebFields on Pillar2Registration {\n  ...Pillar2RegistrationBaseFields\n  dfe {\n    ...Pillar2RegistrationDfeFields\n  }\n  dle {\n    ...Pillar2RegistrationDleFields\n  }\n  entities {\n    ...Pillar2RegistrationEntityFields\n  }\n  group {\n    ...Pillar2RegistrationGroupFields\n  }\n  reviewResult {\n    ...Pillar2RegistrationReviewResultFields\n  }\n  otherRegistrationsOfUpe {\n    ...Pillar2RegistrationOtherUpeFields\n  }\n}","variables":{"id":"2F5D63D4-F176-F111-AC9A-7C1E5239240F"},"operationName":"WebGetPillar2Registration"}`,
+      `{"query":"\\n    query WebGetPillar2Registration($id: ID!) {\\n  getPillar2Registration(id: $id) {\\n    ...Pillar2RegistrationWebFields\\n  }\\n}\\n    fragment TaxpayerFields on Taxpayer {\\n  avatarUrl\\n  email\\n  name\\n  userId\\n}\\nfragment TaxOfficerFields on TaxOfficer {\\n  avatarUrl\\n  email\\n  level\\n  name\\n  officerId\\n  taxRegime\\n  userId\\n}\\nfragment UploadedFileFields on UploadedFile {\\n  documentId\\n  fileName\\n  url\\n}\\nfragment Pillar2RegistrationBaseFields on Pillar2Registration {\\n  applicant {\\n    ...TaxpayerFields\\n  }\\n  createdAt\\n  expireAt\\n  id\\n  status\\n  updatedAt\\n}\\nfragment Pillar2RegistrationDfeFields on Dfe {\\n  jurisdiction {\\n    id\\n    code\\n    countryNameEn\\n    countryNameAr\\n    isQatar\\n  }\\n  legalNameAr\\n  legalNameEn\\n  tin\\n}\\nfragment Pillar2RegistrationDleFields on Dle {\\n  authDocs {\\n    ...UploadedFileFields\\n  }\\n  legalNameAr\\n  legalNameEn\\n  taxRegime\\n  tin\\n}\\nfragment Pillar2RegistrationEntityFields on GroupEntity {\\n  isDle\\n  isDfe\\n  isUpe\\n  hasIirTaxOblig\\n  legalNameAr\\n  legalNameEn\\n  taxRegime\\n  tin\\n}\\nfragment Pillar2RegistrationGroupFields on Pillar2Group {\\n  groupType\\n  isDleUpe\\n  isUpeFileGIR\\n  isSbsSafeHarbor\\n  isDleDfe\\n  hasDFE\\n  name\\n  reportingFyEndDate\\n  reportingFyStartDate\\n  tin\\n  upe {\\n    ...Pillar2RegistrationUpeFields\\n  }\\n}\\nfragment Pillar2RegistrationOtherUpeFields on Pillar2RegistrationListItem {\\n  fiscalYear\\n  groupTin\\n  registrationId\\n  groupNameAr\\n  groupNameEn\\n}\\nfragment Pillar2RegistrationReviewCommentFields on Pillar2ReviewComment {\\n  commentId\\n  commentEn\\n  commentAr\\n}\\nfragment Pillar2RegistrationReviewResultFields on Pillar2Review {\\n  comment {\\n    ...Pillar2RegistrationReviewCommentFields\\n  }\\n  commentDetails\\n  commentsOnFields {\\n    comment\\n    fieldName\\n  }\\n  decision\\n  order\\n  reassignTo {\\n    ...TaxOfficerFields\\n  }\\n  reviewLevel\\n  reviewedAt\\n  reviewer {\\n    ...TaxOfficerFields\\n  }\\n}\\nfragment Pillar2RegistrationUpeFields on Upe {\\n  jurisdiction {\\n    id\\n    code\\n    countryNameEn\\n    countryNameAr\\n    isQatar\\n  }\\n  legalNameAr\\n  legalNameEn\\n  taxRegime\\n  tin\\n}\\nfragment Pillar2RegistrationWebFields on Pillar2Registration {\\n  ...Pillar2RegistrationBaseFields\\n  dfe {\\n    ...Pillar2RegistrationDfeFields\\n  }\\n  dle {\\n    ...Pillar2RegistrationDleFields\\n  }\\n  entities {\\n    ...Pillar2RegistrationEntityFields\\n  }\\n  group {\\n    ...Pillar2RegistrationGroupFields\\n  }\\n  reviewResult {\\n    ...Pillar2RegistrationReviewResultFields\\n  }\\n  otherRegistrationsOfUpe {\\n    ...Pillar2RegistrationOtherUpeFields\\n  }\\n}","variables":{"id":"2F5D63D4-F176-F111-AC9A-7C1E5239240F"},"operationName":"WebGetPillar2Registration"}`,
       params,
     );
 
@@ -232,14 +232,14 @@ export default function () {
         "content-type": `application/json`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716/services/pillar2-registration/2F5D63D4-F176-F111-AC9A-7C1E5239240F/review`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/api/graphql`;
     resp = http.request(
       "POST",
       url,
-      `{"query":"\n    query GetTaxpayerTinDetail($tin: String!) {\n  getTaxpayerTinDetail(tin: $tin) {\n    tin\n    bpStatus\n    legalNameEn\n    legalNameAr\n    taxRegime\n    contactPerson\n    contactPersonAddress\n    emailAddress\n  }\n}\n    ","variables":{"tin":"5001945716"},"operationName":"GetTaxpayerTinDetail"}`,
+      `{"query":"\\n    query GetTaxpayerTinDetail($tin: String!) {\\n  getTaxpayerTinDetail(tin: $tin) {\\n    tin\\n    bpStatus\\n    legalNameEn\\n    legalNameAr\\n    taxRegime\\n    contactPerson\\n    contactPersonAddress\\n    emailAddress\\n  }\\n}\\n    ","variables":{"tin":"5001945716"},"operationName":"GetTaxpayerTinDetail"}`,
       params,
     );
 
@@ -251,14 +251,14 @@ export default function () {
         "content-type": `application/json`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716/services/pillar2-registration/details`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/api/graphql`;
     resp = http.request(
       "POST",
       url,
-      `{"query":"\n    query WebGetTaxpayerPillar2Registrations($taxpayerTin: String!) {\n  getTaxpayerPillar2Registrations(taxpayerTin: $taxpayerTin) {\n    registrationId\n    fiscalYear\n  }\n}\n    ","variables":{"taxpayerTin":"5001945716"},"operationName":"WebGetTaxpayerPillar2Registrations"}`,
+      `{"query":"\\n    query WebGetTaxpayerPillar2Registrations($taxpayerTin: String!) {\\n  getTaxpayerPillar2Registrations(taxpayerTin: $taxpayerTin) {\\n    registrationId\\n    fiscalYear\\n  }\\n}\\n    ","variables":{"taxpayerTin":"5001945716"},"operationName":"WebGetTaxpayerPillar2Registrations"}`,
       params,
     );
 
@@ -270,14 +270,14 @@ export default function () {
         "content-type": `application/json`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716/services/pillar2-registration/details`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/api/graphql`;
     resp = http.request(
       "POST",
       url,
-      `{"query":"\n    query WebGetPillar2Registration($id: ID!) {\n  getPillar2Registration(id: $id) {\n    ...Pillar2RegistrationWebFields\n  }\n}\n    fragment TaxpayerFields on Taxpayer {\n  avatarUrl\n  email\n  name\n  userId\n}\nfragment TaxOfficerFields on TaxOfficer {\n  avatarUrl\n  email\n  level\n  name\n  officerId\n  taxRegime\n  userId\n}\nfragment UploadedFileFields on UploadedFile {\n  documentId\n  fileName\n  url\n}\nfragment Pillar2RegistrationBaseFields on Pillar2Registration {\n  applicant {\n    ...TaxpayerFields\n  }\n  createdAt\n  expireAt\n  id\n  status\n  updatedAt\n}\nfragment Pillar2RegistrationDfeFields on Dfe {\n  jurisdiction {\n    id\n    code\n    countryNameEn\n    countryNameAr\n    isQatar\n  }\n  legalNameAr\n  legalNameEn\n  tin\n}\nfragment Pillar2RegistrationDleFields on Dle {\n  authDocs {\n    ...UploadedFileFields\n  }\n  legalNameAr\n  legalNameEn\n  taxRegime\n  tin\n}\nfragment Pillar2RegistrationEntityFields on GroupEntity {\n  isDle\n  isDfe\n  isUpe\n  hasIirTaxOblig\n  legalNameAr\n  legalNameEn\n  taxRegime\n  tin\n}\nfragment Pillar2RegistrationGroupFields on Pillar2Group {\n  groupType\n  isDleUpe\n  isUpeFileGIR\n  isSbsSafeHarbor\n  isDleDfe\n  hasDFE\n  name\n  reportingFyEndDate\n  reportingFyStartDate\n  tin\n  upe {\n    ...Pillar2RegistrationUpeFields\n  }\n}\nfragment Pillar2RegistrationOtherUpeFields on Pillar2RegistrationListItem {\n  fiscalYear\n  groupTin\n  registrationId\n  groupNameAr\n  groupNameEn\n}\nfragment Pillar2RegistrationReviewCommentFields on Pillar2ReviewComment {\n  commentId\n  commentEn\n  commentAr\n}\nfragment Pillar2RegistrationReviewResultFields on Pillar2Review {\n  comment {\n    ...Pillar2RegistrationReviewCommentFields\n  }\n  commentDetails\n  commentsOnFields {\n    comment\n    fieldName\n  }\n  decision\n  order\n  reassignTo {\n    ...TaxOfficerFields\n  }\n  reviewLevel\n  reviewedAt\n  reviewer {\n    ...TaxOfficerFields\n  }\n}\nfragment Pillar2RegistrationUpeFields on Upe {\n  jurisdiction {\n    id\n    code\n    countryNameEn\n    countryNameAr\n    isQatar\n  }\n  legalNameAr\n  legalNameEn\n  taxRegime\n  tin\n}\nfragment Pillar2RegistrationWebFields on Pillar2Registration {\n  ...Pillar2RegistrationBaseFields\n  dfe {\n    ...Pillar2RegistrationDfeFields\n  }\n  dle {\n    ...Pillar2RegistrationDleFields\n  }\n  entities {\n    ...Pillar2RegistrationEntityFields\n  }\n  group {\n    ...Pillar2RegistrationGroupFields\n  }\n  reviewResult {\n    ...Pillar2RegistrationReviewResultFields\n  }\n  otherRegistrationsOfUpe {\n    ...Pillar2RegistrationOtherUpeFields\n  }\n}","variables":{"id":"2F5D63D4-F176-F111-AC9A-7C1E5239240F"},"operationName":"WebGetPillar2Registration"}`,
+      `{"query":"\\n    query WebGetPillar2Registration($id: ID!) {\\n  getPillar2Registration(id: $id) {\\n    ...Pillar2RegistrationWebFields\\n  }\\n}\\n    fragment TaxpayerFields on Taxpayer {\\n  avatarUrl\\n  email\\n  name\\n  userId\\n}\\nfragment TaxOfficerFields on TaxOfficer {\\n  avatarUrl\\n  email\\n  level\\n  name\\n  officerId\\n  taxRegime\\n  userId\\n}\\nfragment UploadedFileFields on UploadedFile {\\n  documentId\\n  fileName\\n  url\\n}\\nfragment Pillar2RegistrationBaseFields on Pillar2Registration {\\n  applicant {\\n    ...TaxpayerFields\\n  }\\n  createdAt\\n  expireAt\\n  id\\n  status\\n  updatedAt\\n}\\nfragment Pillar2RegistrationDfeFields on Dfe {\\n  jurisdiction {\\n    id\\n    code\\n    countryNameEn\\n    countryNameAr\\n    isQatar\\n  }\\n  legalNameAr\\n  legalNameEn\\n  tin\\n}\\nfragment Pillar2RegistrationDleFields on Dle {\\n  authDocs {\\n    ...UploadedFileFields\\n  }\\n  legalNameAr\\n  legalNameEn\\n  taxRegime\\n  tin\\n}\\nfragment Pillar2RegistrationEntityFields on GroupEntity {\\n  isDle\\n  isDfe\\n  isUpe\\n  hasIirTaxOblig\\n  legalNameAr\\n  legalNameEn\\n  taxRegime\\n  tin\\n}\\nfragment Pillar2RegistrationGroupFields on Pillar2Group {\\n  groupType\\n  isDleUpe\\n  isUpeFileGIR\\n  isSbsSafeHarbor\\n  isDleDfe\\n  hasDFE\\n  name\\n  reportingFyEndDate\\n  reportingFyStartDate\\n  tin\\n  upe {\\n    ...Pillar2RegistrationUpeFields\\n  }\\n}\\nfragment Pillar2RegistrationOtherUpeFields on Pillar2RegistrationListItem {\\n  fiscalYear\\n  groupTin\\n  registrationId\\n  groupNameAr\\n  groupNameEn\\n}\\nfragment Pillar2RegistrationReviewCommentFields on Pillar2ReviewComment {\\n  commentId\\n  commentEn\\n  commentAr\\n}\\nfragment Pillar2RegistrationReviewResultFields on Pillar2Review {\\n  comment {\\n    ...Pillar2RegistrationReviewCommentFields\\n  }\\n  commentDetails\\n  commentsOnFields {\\n    comment\\n    fieldName\\n  }\\n  decision\\n  order\\n  reassignTo {\\n    ...TaxOfficerFields\\n  }\\n  reviewLevel\\n  reviewedAt\\n  reviewer {\\n    ...TaxOfficerFields\\n  }\\n}\\nfragment Pillar2RegistrationUpeFields on Upe {\\n  jurisdiction {\\n    id\\n    code\\n    countryNameEn\\n    countryNameAr\\n    isQatar\\n  }\\n  legalNameAr\\n  legalNameEn\\n  taxRegime\\n  tin\\n}\\nfragment Pillar2RegistrationWebFields on Pillar2Registration {\\n  ...Pillar2RegistrationBaseFields\\n  dfe {\\n    ...Pillar2RegistrationDfeFields\\n  }\\n  dle {\\n    ...Pillar2RegistrationDleFields\\n  }\\n  entities {\\n    ...Pillar2RegistrationEntityFields\\n  }\\n  group {\\n    ...Pillar2RegistrationGroupFields\\n  }\\n  reviewResult {\\n    ...Pillar2RegistrationReviewResultFields\\n  }\\n  otherRegistrationsOfUpe {\\n    ...Pillar2RegistrationOtherUpeFields\\n  }\\n}","variables":{"id":"2F5D63D4-F176-F111-AC9A-7C1E5239240F"},"operationName":"WebGetPillar2Registration"}`,
       params,
     );
 
@@ -288,7 +288,7 @@ export default function () {
         Accept: `text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716/services/pillar2-registration/details`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/5001945716`;
@@ -302,14 +302,14 @@ export default function () {
         "content-type": `application/json`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/api/graphql`;
     resp = http.request(
       "POST",
       url,
-      `{"query":"\n    query GetTaxpayerTins {\n  getTaxpayerTins {\n    bpStatus\n    tin\n    legalNameEn\n    legalNameAr\n  }\n}\n    ","operationName":"GetTaxpayerTins"}`,
+      `{"query":"\\n    query GetTaxpayerTins {\\n  getTaxpayerTins {\\n    bpStatus\\n    tin\\n    legalNameEn\\n    legalNameAr\\n  }\\n}\\n    ","operationName":"GetTaxpayerTins"}`,
       params,
     );
 
@@ -321,14 +321,14 @@ export default function () {
         "content-type": `application/json`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/api/graphql`;
     resp = http.request(
       "POST",
       url,
-      `{"query":"\n    query GetTaxpayerTasks($tin: String) {\n  getTaxpayerTasks(tin: $tin) {\n    applicationId\n    priority\n    status\n    submissionTime\n    tin\n    taxpayer {\n      avatarUrl\n      email\n      name\n      userId\n    }\n    type\n  }\n}\n    ","variables":{"tin":"5001945716"},"operationName":"GetTaxpayerTasks"}`,
+      `{"query":"\\n    query GetTaxpayerTasks($tin: String) {\\n  getTaxpayerTasks(tin: $tin) {\\n    applicationId\\n    priority\\n    status\\n    submissionTime\\n    tin\\n    taxpayer {\\n      avatarUrl\\n      email\\n      name\\n      userId\\n    }\\n    type\\n  }\\n}\\n    ","variables":{"tin":"5001945716"},"operationName":"GetTaxpayerTasks"}`,
       params,
     );
 
@@ -340,14 +340,14 @@ export default function () {
         "content-type": `application/json`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/api/graphql`;
     resp = http.request(
       "POST",
       url,
-      `{"query":"\n    query WebGetTaxpayerPillar2Registrations($taxpayerTin: String!) {\n  getTaxpayerPillar2Registrations(taxpayerTin: $taxpayerTin) {\n    registrationId\n    fiscalYear\n  }\n}\n    ","variables":{"taxpayerTin":"5001945716"},"operationName":"WebGetTaxpayerPillar2Registrations"}`,
+      `{"query":"\\n    query WebGetTaxpayerPillar2Registrations($taxpayerTin: String!) {\\n  getTaxpayerPillar2Registrations(taxpayerTin: $taxpayerTin) {\\n    registrationId\\n    fiscalYear\\n  }\\n}\\n    ","variables":{"taxpayerTin":"5001945716"},"operationName":"WebGetTaxpayerPillar2Registrations"}`,
       params,
     );
 
@@ -362,7 +362,7 @@ export default function () {
         Accept: `*/*`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/en?_rsc=GXXugABPoI2WMoi7`;
@@ -379,7 +379,7 @@ export default function () {
         Accept: `*/*`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/5001945716/services/pillar2-registration/guide?_rsc=GXXugABPoI2WMoi7`;
@@ -396,7 +396,7 @@ export default function () {
         Accept: `*/*`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/5001945716/services/pillar2-registration/details?_rsc=GXXugABPoI2WMoi7`;
@@ -413,7 +413,7 @@ export default function () {
         Accept: `*/*`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/5001945716/services/pillar2-registration/2F5D63D4-F176-F111-AC9A-7C1E5239240F?_rsc=GXXugABPoI2WMoi7`;
@@ -429,7 +429,7 @@ export default function () {
         Accept: `*/*`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/5001945716/services/pillar2-registration/details?_rsc=WpT5Q6YI6Bi858Ug`;
@@ -443,14 +443,14 @@ export default function () {
         "content-type": `application/json`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716/services/pillar2-registration/details`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/api/graphql`;
     resp = http.request(
       "POST",
       url,
-      `{"query":"\n    query WebGetTaxpayerPillar2Registrations($taxpayerTin: String!) {\n  getTaxpayerPillar2Registrations(taxpayerTin: $taxpayerTin) {\n    registrationId\n    fiscalYear\n  }\n}\n    ","variables":{"taxpayerTin":"5001945716"},"operationName":"WebGetTaxpayerPillar2Registrations"}`,
+      `{"query":"\\n    query WebGetTaxpayerPillar2Registrations($taxpayerTin: String!) {\\n  getTaxpayerPillar2Registrations(taxpayerTin: $taxpayerTin) {\\n    registrationId\\n    fiscalYear\\n  }\\n}\\n    ","variables":{"taxpayerTin":"5001945716"},"operationName":"WebGetTaxpayerPillar2Registrations"}`,
       params,
     );
 
@@ -462,14 +462,14 @@ export default function () {
         "content-type": `application/json`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716/services/pillar2-registration/details`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/api/graphql`;
     resp = http.request(
       "POST",
       url,
-      `{"query":"\n    query WebGetPillar2Registration($id: ID!) {\n  getPillar2Registration(id: $id) {\n    ...Pillar2RegistrationWebFields\n  }\n}\n    fragment TaxpayerFields on Taxpayer {\n  avatarUrl\n  email\n  name\n  userId\n}\nfragment TaxOfficerFields on TaxOfficer {\n  avatarUrl\n  email\n  level\n  name\n  officerId\n  taxRegime\n  userId\n}\nfragment UploadedFileFields on UploadedFile {\n  documentId\n  fileName\n  url\n}\nfragment Pillar2RegistrationBaseFields on Pillar2Registration {\n  applicant {\n    ...TaxpayerFields\n  }\n  createdAt\n  expireAt\n  id\n  status\n  updatedAt\n}\nfragment Pillar2RegistrationDfeFields on Dfe {\n  jurisdiction {\n    id\n    code\n    countryNameEn\n    countryNameAr\n    isQatar\n  }\n  legalNameAr\n  legalNameEn\n  tin\n}\nfragment Pillar2RegistrationDleFields on Dle {\n  authDocs {\n    ...UploadedFileFields\n  }\n  legalNameAr\n  legalNameEn\n  taxRegime\n  tin\n}\nfragment Pillar2RegistrationEntityFields on GroupEntity {\n  isDle\n  isDfe\n  isUpe\n  hasIirTaxOblig\n  legalNameAr\n  legalNameEn\n  taxRegime\n  tin\n}\nfragment Pillar2RegistrationGroupFields on Pillar2Group {\n  groupType\n  isDleUpe\n  isUpeFileGIR\n  isSbsSafeHarbor\n  isDleDfe\n  hasDFE\n  name\n  reportingFyEndDate\n  reportingFyStartDate\n  tin\n  upe {\n    ...Pillar2RegistrationUpeFields\n  }\n}\nfragment Pillar2RegistrationOtherUpeFields on Pillar2RegistrationListItem {\n  fiscalYear\n  groupTin\n  registrationId\n  groupNameAr\n  groupNameEn\n}\nfragment Pillar2RegistrationReviewCommentFields on Pillar2ReviewComment {\n  commentId\n  commentEn\n  commentAr\n}\nfragment Pillar2RegistrationReviewResultFields on Pillar2Review {\n  comment {\n    ...Pillar2RegistrationReviewCommentFields\n  }\n  commentDetails\n  commentsOnFields {\n    comment\n    fieldName\n  }\n  decision\n  order\n  reassignTo {\n    ...TaxOfficerFields\n  }\n  reviewLevel\n  reviewedAt\n  reviewer {\n    ...TaxOfficerFields\n  }\n}\nfragment Pillar2RegistrationUpeFields on Upe {\n  jurisdiction {\n    id\n    code\n    countryNameEn\n    countryNameAr\n    isQatar\n  }\n  legalNameAr\n  legalNameEn\n  taxRegime\n  tin\n}\nfragment Pillar2RegistrationWebFields on Pillar2Registration {\n  ...Pillar2RegistrationBaseFields\n  dfe {\n    ...Pillar2RegistrationDfeFields\n  }\n  dle {\n    ...Pillar2RegistrationDleFields\n  }\n  entities {\n    ...Pillar2RegistrationEntityFields\n  }\n  group {\n    ...Pillar2RegistrationGroupFields\n  }\n  reviewResult {\n    ...Pillar2RegistrationReviewResultFields\n  }\n  otherRegistrationsOfUpe {\n    ...Pillar2RegistrationOtherUpeFields\n  }\n}","variables":{"id":"2F5D63D4-F176-F111-AC9A-7C1E5239240F"},"operationName":"WebGetPillar2Registration"}`,
+      `{"query":"\\n    query WebGetPillar2Registration($id: ID!) {\\n  getPillar2Registration(id: $id) {\\n    ...Pillar2RegistrationWebFields\\n  }\\n}\\n    fragment TaxpayerFields on Taxpayer {\\n  avatarUrl\\n  email\\n  name\\n  userId\\n}\\nfragment TaxOfficerFields on TaxOfficer {\\n  avatarUrl\\n  email\\n  level\\n  name\\n  officerId\\n  taxRegime\\n  userId\\n}\\nfragment UploadedFileFields on UploadedFile {\\n  documentId\\n  fileName\\n  url\\n}\\nfragment Pillar2RegistrationBaseFields on Pillar2Registration {\\n  applicant {\\n    ...TaxpayerFields\\n  }\\n  createdAt\\n  expireAt\\n  id\\n  status\\n  updatedAt\\n}\\nfragment Pillar2RegistrationDfeFields on Dfe {\\n  jurisdiction {\\n    id\\n    code\\n    countryNameEn\\n    countryNameAr\\n    isQatar\\n  }\\n  legalNameAr\\n  legalNameEn\\n  tin\\n}\\nfragment Pillar2RegistrationDleFields on Dle {\\n  authDocs {\\n    ...UploadedFileFields\\n  }\\n  legalNameAr\\n  legalNameEn\\n  taxRegime\\n  tin\\n}\\nfragment Pillar2RegistrationEntityFields on GroupEntity {\\n  isDle\\n  isDfe\\n  isUpe\\n  hasIirTaxOblig\\n  legalNameAr\\n  legalNameEn\\n  taxRegime\\n  tin\\n}\\nfragment Pillar2RegistrationGroupFields on Pillar2Group {\\n  groupType\\n  isDleUpe\\n  isUpeFileGIR\\n  isSbsSafeHarbor\\n  isDleDfe\\n  hasDFE\\n  name\\n  reportingFyEndDate\\n  reportingFyStartDate\\n  tin\\n  upe {\\n    ...Pillar2RegistrationUpeFields\\n  }\\n}\\nfragment Pillar2RegistrationOtherUpeFields on Pillar2RegistrationListItem {\\n  fiscalYear\\n  groupTin\\n  registrationId\\n  groupNameAr\\n  groupNameEn\\n}\\nfragment Pillar2RegistrationReviewCommentFields on Pillar2ReviewComment {\\n  commentId\\n  commentEn\\n  commentAr\\n}\\nfragment Pillar2RegistrationReviewResultFields on Pillar2Review {\\n  comment {\\n    ...Pillar2RegistrationReviewCommentFields\\n  }\\n  commentDetails\\n  commentsOnFields {\\n    comment\\n    fieldName\\n  }\\n  decision\\n  order\\n  reassignTo {\\n    ...TaxOfficerFields\\n  }\\n  reviewLevel\\n  reviewedAt\\n  reviewer {\\n    ...TaxOfficerFields\\n  }\\n}\\nfragment Pillar2RegistrationUpeFields on Upe {\\n  jurisdiction {\\n    id\\n    code\\n    countryNameEn\\n    countryNameAr\\n    isQatar\\n  }\\n  legalNameAr\\n  legalNameEn\\n  taxRegime\\n  tin\\n}\\nfragment Pillar2RegistrationWebFields on Pillar2Registration {\\n  ...Pillar2RegistrationBaseFields\\n  dfe {\\n    ...Pillar2RegistrationDfeFields\\n  }\\n  dle {\\n    ...Pillar2RegistrationDleFields\\n  }\\n  entities {\\n    ...Pillar2RegistrationEntityFields\\n  }\\n  group {\\n    ...Pillar2RegistrationGroupFields\\n  }\\n  reviewResult {\\n    ...Pillar2RegistrationReviewResultFields\\n  }\\n  otherRegistrationsOfUpe {\\n    ...Pillar2RegistrationOtherUpeFields\\n  }\\n}","variables":{"id":"2F5D63D4-F176-F111-AC9A-7C1E5239240F"},"operationName":"WebGetPillar2Registration"}`,
       params,
     );
 
@@ -480,7 +480,7 @@ export default function () {
         Accept: `text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716/services/pillar2-registration/details`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/5001945716`;
@@ -494,14 +494,14 @@ export default function () {
         "content-type": `application/json`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/api/graphql`;
     resp = http.request(
       "POST",
       url,
-      `{"query":"\n    query GetTaxpayerTins {\n  getTaxpayerTins {\n    bpStatus\n    tin\n    legalNameEn\n    legalNameAr\n  }\n}\n    ","operationName":"GetTaxpayerTins"}`,
+      `{"query":"\\n    query GetTaxpayerTins {\\n  getTaxpayerTins {\\n    bpStatus\\n    tin\\n    legalNameEn\\n    legalNameAr\\n  }\\n}\\n    ","operationName":"GetTaxpayerTins"}`,
       params,
     );
 
@@ -513,14 +513,14 @@ export default function () {
         "content-type": `application/json`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/api/graphql`;
     resp = http.request(
       "POST",
       url,
-      `{"query":"\n    query GetTaxpayerTasks($tin: String) {\n  getTaxpayerTasks(tin: $tin) {\n    applicationId\n    priority\n    status\n    submissionTime\n    tin\n    taxpayer {\n      avatarUrl\n      email\n      name\n      userId\n    }\n    type\n  }\n}\n    ","variables":{"tin":"5001945716"},"operationName":"GetTaxpayerTasks"}`,
+      `{"query":"\\n    query GetTaxpayerTasks($tin: String) {\\n  getTaxpayerTasks(tin: $tin) {\\n    applicationId\\n    priority\\n    status\\n    submissionTime\\n    tin\\n    taxpayer {\\n      avatarUrl\\n      email\\n      name\\n      userId\\n    }\\n    type\\n  }\\n}\\n    ","variables":{"tin":"5001945716"},"operationName":"GetTaxpayerTasks"}`,
       params,
     );
 
@@ -532,14 +532,14 @@ export default function () {
         "content-type": `application/json`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/api/graphql`;
     resp = http.request(
       "POST",
       url,
-      `{"query":"\n    query WebGetTaxpayerPillar2Registrations($taxpayerTin: String!) {\n  getTaxpayerPillar2Registrations(taxpayerTin: $taxpayerTin) {\n    registrationId\n    fiscalYear\n  }\n}\n    ","variables":{"taxpayerTin":"5001945716"},"operationName":"WebGetTaxpayerPillar2Registrations"}`,
+      `{"query":"\\n    query WebGetTaxpayerPillar2Registrations($taxpayerTin: String!) {\\n  getTaxpayerPillar2Registrations(taxpayerTin: $taxpayerTin) {\\n    registrationId\\n    fiscalYear\\n  }\\n}\\n    ","variables":{"taxpayerTin":"5001945716"},"operationName":"WebGetTaxpayerPillar2Registrations"}`,
       params,
     );
 
@@ -554,7 +554,7 @@ export default function () {
         Accept: `*/*`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/en?_rsc=GXXugABPoI2WMoi7`;
@@ -571,7 +571,7 @@ export default function () {
         Accept: `*/*`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/5001945716/services/pillar2-registration/guide?_rsc=GXXugABPoI2WMoi7`;
@@ -588,7 +588,7 @@ export default function () {
         Accept: `*/*`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/5001945716/services/pillar2-registration/details?_rsc=GXXugABPoI2WMoi7`;
@@ -605,7 +605,7 @@ export default function () {
         Accept: `*/*`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/5001945716/services/pillar2-registration/2F5D63D4-F176-F111-AC9A-7C1E5239240F?_rsc=GXXugABPoI2WMoi7`;
@@ -621,7 +621,7 @@ export default function () {
         Accept: `*/*`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/5001945716/services/pillar2-registration/guide?_rsc=EsxsO1IuT24TlDT9`;
@@ -635,14 +635,14 @@ export default function () {
         "content-type": `application/json`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716/services/pillar2-registration/guide`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/api/graphql`;
     resp = http.request(
       "POST",
       url,
-      `{"query":"\n    query GetTaxpayerTasks($tin: String) {\n  getTaxpayerTasks(tin: $tin) {\n    applicationId\n    priority\n    status\n    submissionTime\n    tin\n    taxpayer {\n      avatarUrl\n      email\n      name\n      userId\n    }\n    type\n  }\n}\n    ","variables":{"tin":"5001945716"},"operationName":"GetTaxpayerTasks"}`,
+      `{"query":"\\n    query GetTaxpayerTasks($tin: String) {\\n  getTaxpayerTasks(tin: $tin) {\\n    applicationId\\n    priority\\n    status\\n    submissionTime\\n    tin\\n    taxpayer {\\n      avatarUrl\\n      email\\n      name\\n      userId\\n    }\\n    type\\n  }\\n}\\n    ","variables":{"tin":"5001945716"},"operationName":"GetTaxpayerTasks"}`,
       params,
     );
 
@@ -654,14 +654,14 @@ export default function () {
         "content-type": `application/json`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716/services/pillar2-registration/guide`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/api/graphql`;
     resp = http.request(
       "POST",
       url,
-      `{"query":"\n    query GetTaxpayerTinDetail($tin: String!) {\n  getTaxpayerTinDetail(tin: $tin) {\n    tin\n    bpStatus\n    legalNameEn\n    legalNameAr\n    taxRegime\n    contactPerson\n    contactPersonAddress\n    emailAddress\n  }\n}\n    ","variables":{"tin":"5001945716"},"operationName":"GetTaxpayerTinDetail"}`,
+      `{"query":"\\n    query GetTaxpayerTinDetail($tin: String!) {\\n  getTaxpayerTinDetail(tin: $tin) {\\n    tin\\n    bpStatus\\n    legalNameEn\\n    legalNameAr\\n    taxRegime\\n    contactPerson\\n    contactPersonAddress\\n    emailAddress\\n  }\\n}\\n    ","variables":{"tin":"5001945716"},"operationName":"GetTaxpayerTinDetail"}`,
       params,
     );
 
@@ -673,14 +673,14 @@ export default function () {
         "content-type": `application/json`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716/services/pillar2-registration/guide`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/api/graphql`;
     resp = http.request(
       "POST",
       url,
-      `{"query":"\n    query WebGetPillar2InstructionUrl {\n  getPillar2InstructionPdfUrl: getPillar2FileUrl(fileType: INSTRUCTION_PDF)\n  getPillar2InstructionVideoUrl: getPillar2FileUrl(fileType: INSTRUCTION_VIDEO)\n}\n    ","operationName":"WebGetPillar2InstructionUrl"}`,
+      `{"query":"\\n    query WebGetPillar2InstructionUrl {\\n  getPillar2InstructionPdfUrl: getPillar2FileUrl(fileType: INSTRUCTION_PDF)\\n  getPillar2InstructionVideoUrl: getPillar2FileUrl(fileType: INSTRUCTION_VIDEO)\\n}\\n    ","operationName":"WebGetPillar2InstructionUrl"}`,
       params,
     );
 
@@ -692,14 +692,14 @@ export default function () {
         "content-type": `application/json`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716/services/pillar2-registration/2F5D63D4-F176-F111-AC9A-7C1E5239240F`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/api/graphql`;
     resp = http.request(
       "POST",
       url,
-      `{"query":"\n    query WebGetPillar2Registration($id: ID!) {\n  getPillar2Registration(id: $id) {\n    ...Pillar2RegistrationWebFields\n  }\n}\n    fragment TaxpayerFields on Taxpayer {\n  avatarUrl\n  email\n  name\n  userId\n}\nfragment TaxOfficerFields on TaxOfficer {\n  avatarUrl\n  email\n  level\n  name\n  officerId\n  taxRegime\n  userId\n}\nfragment UploadedFileFields on UploadedFile {\n  documentId\n  fileName\n  url\n}\nfragment Pillar2RegistrationBaseFields on Pillar2Registration {\n  applicant {\n    ...TaxpayerFields\n  }\n  createdAt\n  expireAt\n  id\n  status\n  updatedAt\n}\nfragment Pillar2RegistrationDfeFields on Dfe {\n  jurisdiction {\n    id\n    code\n    countryNameEn\n    countryNameAr\n    isQatar\n  }\n  legalNameAr\n  legalNameEn\n  tin\n}\nfragment Pillar2RegistrationDleFields on Dle {\n  authDocs {\n    ...UploadedFileFields\n  }\n  legalNameAr\n  legalNameEn\n  taxRegime\n  tin\n}\nfragment Pillar2RegistrationEntityFields on GroupEntity {\n  isDle\n  isDfe\n  isUpe\n  hasIirTaxOblig\n  legalNameAr\n  legalNameEn\n  taxRegime\n  tin\n}\nfragment Pillar2RegistrationGroupFields on Pillar2Group {\n  groupType\n  isDleUpe\n  isUpeFileGIR\n  isSbsSafeHarbor\n  isDleDfe\n  hasDFE\n  name\n  reportingFyEndDate\n  reportingFyStartDate\n  tin\n  upe {\n    ...Pillar2RegistrationUpeFields\n  }\n}\nfragment Pillar2RegistrationOtherUpeFields on Pillar2RegistrationListItem {\n  fiscalYear\n  groupTin\n  registrationId\n  groupNameAr\n  groupNameEn\n}\nfragment Pillar2RegistrationReviewCommentFields on Pillar2ReviewComment {\n  commentId\n  commentEn\n  commentAr\n}\nfragment Pillar2RegistrationReviewResultFields on Pillar2Review {\n  comment {\n    ...Pillar2RegistrationReviewCommentFields\n  }\n  commentDetails\n  commentsOnFields {\n    comment\n    fieldName\n  }\n  decision\n  order\n  reassignTo {\n    ...TaxOfficerFields\n  }\n  reviewLevel\n  reviewedAt\n  reviewer {\n    ...TaxOfficerFields\n  }\n}\nfragment Pillar2RegistrationUpeFields on Upe {\n  jurisdiction {\n    id\n    code\n    countryNameEn\n    countryNameAr\n    isQatar\n  }\n  legalNameAr\n  legalNameEn\n  taxRegime\n  tin\n}\nfragment Pillar2RegistrationWebFields on Pillar2Registration {\n  ...Pillar2RegistrationBaseFields\n  dfe {\n    ...Pillar2RegistrationDfeFields\n  }\n  dle {\n    ...Pillar2RegistrationDleFields\n  }\n  entities {\n    ...Pillar2RegistrationEntityFields\n  }\n  group {\n    ...Pillar2RegistrationGroupFields\n  }\n  reviewResult {\n    ...Pillar2RegistrationReviewResultFields\n  }\n  otherRegistrationsOfUpe {\n    ...Pillar2RegistrationOtherUpeFields\n  }\n}","variables":{"id":"2F5D63D4-F176-F111-AC9A-7C1E5239240F"},"operationName":"WebGetPillar2Registration"}`,
+      `{"query":"\\n    query WebGetPillar2Registration($id: ID!) {\\n  getPillar2Registration(id: $id) {\\n    ...Pillar2RegistrationWebFields\\n  }\\n}\\n    fragment TaxpayerFields on Taxpayer {\\n  avatarUrl\\n  email\\n  name\\n  userId\\n}\\nfragment TaxOfficerFields on TaxOfficer {\\n  avatarUrl\\n  email\\n  level\\n  name\\n  officerId\\n  taxRegime\\n  userId\\n}\\nfragment UploadedFileFields on UploadedFile {\\n  documentId\\n  fileName\\n  url\\n}\\nfragment Pillar2RegistrationBaseFields on Pillar2Registration {\\n  applicant {\\n    ...TaxpayerFields\\n  }\\n  createdAt\\n  expireAt\\n  id\\n  status\\n  updatedAt\\n}\\nfragment Pillar2RegistrationDfeFields on Dfe {\\n  jurisdiction {\\n    id\\n    code\\n    countryNameEn\\n    countryNameAr\\n    isQatar\\n  }\\n  legalNameAr\\n  legalNameEn\\n  tin\\n}\\nfragment Pillar2RegistrationDleFields on Dle {\\n  authDocs {\\n    ...UploadedFileFields\\n  }\\n  legalNameAr\\n  legalNameEn\\n  taxRegime\\n  tin\\n}\\nfragment Pillar2RegistrationEntityFields on GroupEntity {\\n  isDle\\n  isDfe\\n  isUpe\\n  hasIirTaxOblig\\n  legalNameAr\\n  legalNameEn\\n  taxRegime\\n  tin\\n}\\nfragment Pillar2RegistrationGroupFields on Pillar2Group {\\n  groupType\\n  isDleUpe\\n  isUpeFileGIR\\n  isSbsSafeHarbor\\n  isDleDfe\\n  hasDFE\\n  name\\n  reportingFyEndDate\\n  reportingFyStartDate\\n  tin\\n  upe {\\n    ...Pillar2RegistrationUpeFields\\n  }\\n}\\nfragment Pillar2RegistrationOtherUpeFields on Pillar2RegistrationListItem {\\n  fiscalYear\\n  groupTin\\n  registrationId\\n  groupNameAr\\n  groupNameEn\\n}\\nfragment Pillar2RegistrationReviewCommentFields on Pillar2ReviewComment {\\n  commentId\\n  commentEn\\n  commentAr\\n}\\nfragment Pillar2RegistrationReviewResultFields on Pillar2Review {\\n  comment {\\n    ...Pillar2RegistrationReviewCommentFields\\n  }\\n  commentDetails\\n  commentsOnFields {\\n    comment\\n    fieldName\\n  }\\n  decision\\n  order\\n  reassignTo {\\n    ...TaxOfficerFields\\n  }\\n  reviewLevel\\n  reviewedAt\\n  reviewer {\\n    ...TaxOfficerFields\\n  }\\n}\\nfragment Pillar2RegistrationUpeFields on Upe {\\n  jurisdiction {\\n    id\\n    code\\n    countryNameEn\\n    countryNameAr\\n    isQatar\\n  }\\n  legalNameAr\\n  legalNameEn\\n  taxRegime\\n  tin\\n}\\nfragment Pillar2RegistrationWebFields on Pillar2Registration {\\n  ...Pillar2RegistrationBaseFields\\n  dfe {\\n    ...Pillar2RegistrationDfeFields\\n  }\\n  dle {\\n    ...Pillar2RegistrationDleFields\\n  }\\n  entities {\\n    ...Pillar2RegistrationEntityFields\\n  }\\n  group {\\n    ...Pillar2RegistrationGroupFields\\n  }\\n  reviewResult {\\n    ...Pillar2RegistrationReviewResultFields\\n  }\\n  otherRegistrationsOfUpe {\\n    ...Pillar2RegistrationOtherUpeFields\\n  }\\n}","variables":{"id":"2F5D63D4-F176-F111-AC9A-7C1E5239240F"},"operationName":"WebGetPillar2Registration"}`,
       params,
     );
 
@@ -711,14 +711,14 @@ export default function () {
         "content-type": `application/json`,
         Referer: `https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716/services/pillar2-registration/2F5D63D4-F176-F111-AC9A-7C1E5239240F/review`,
       },
-      cookies: {},
+
     };
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/api/graphql`;
     resp = http.request(
       "POST",
       url,
-      `{"query":"\n    query GetTaxpayerTinDetail($tin: String!) {\n  getTaxpayerTinDetail(tin: $tin) {\n    tin\n    bpStatus\n    legalNameEn\n    legalNameAr\n    taxRegime\n    contactPerson\n    contactPersonAddress\n    emailAddress\n  }\n}\n    ","variables":{"tin":"5001945716"},"operationName":"GetTaxpayerTinDetail"}`,
+      `{"query":"\\n    query GetTaxpayerTinDetail($tin: String!) {\\n  getTaxpayerTinDetail(tin: $tin) {\\n    tin\\n    bpStatus\\n    legalNameEn\\n    legalNameAr\\n    taxRegime\\n    contactPerson\\n    contactPersonAddress\\n    emailAddress\\n  }\\n}\\n    ","variables":{"tin":"5001945716"},"operationName":"GetTaxpayerTinDetail"}`,
       params,
     );
 
