@@ -6,7 +6,7 @@ import execution from "k6/execution";
 
 const BASE_URL = __ENV.BASE_URL || "https://taxpayer-pre-dh2.gta.gov.qa";
 const SESSION_COOKIE_NAME = __ENV.SESSION_COOKIE_NAME || "session";
-const SESSION_TOKEN = __ENV.SESSION_TOKEN;
+const SESSION_TOKEN = __ENV.SESSION_TOKEN || "8ZE6wW0gZe4CvcE3nBH5ZA";
 
 export const options = {
   stages: [
@@ -38,12 +38,6 @@ export default function () {
   let regex;
   let url;
   const correlation_vars = {};
-
-  if (!SESSION_TOKEN) {
-    throw new Error(
-      "SESSION_TOKEN is required. Run with: SESSION_TOKEN='...' k6 run taxpayer-load-test.js",
-    );
-  }
 
   http.cookieJar().set(BASE_URL, SESSION_COOKIE_NAME, SESSION_TOKEN);
 
