@@ -14,9 +14,9 @@ const TIN = __ENV.TIN || "5001945716";
 
 export const options = {
   stages: [
-    { target: 10, duration: "1m" },
-    { target: 10, duration: "3m30s" },
-    { target: 0, duration: "1m" },
+    { target: 10, duration: "5m" },
+    { target: 10, duration: "3ms" },
+    { target: 0, duration: "2m" },
   ],
 };
 
