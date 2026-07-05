@@ -4,6 +4,7 @@
 
 import { group, sleep, check } from "k6";
 import http from "k6/http";
+import { Trend } from "k6/metrics";
 
 const BASE_URL = __ENV.BASE_URL || "https://taxofficer-pre-dh2.gta.gov.qa";
 const SESSION_COOKIE_NAME = __ENV.SESSION_COOKIE_NAME || "session";
@@ -18,6 +19,34 @@ export const options = {
     { target: 20, duration: "3ms" },
     { target: 0, duration: "2m" },
   ],
+  summaryTrendStats: ["avg", "min", "max"],
+};
+
+const endpointTimings = {
+  dashboardRedirect: new Trend("endpoint_dashboard_redirect"),
+  dashboardPage: new Trend("endpoint_dashboard_page"),
+  graphqlGetUserProfile: new Trend("endpoint_graphql_get_user_profile"),
+  graphqlGetPillar2RegistrationReport: new Trend(
+    "endpoint_graphql_get_pillar2_registration_report",
+  ),
+  rscRegistrationRedirect: new Trend("endpoint_rsc_registration_redirect"),
+  graphqlAdminGetPillar2Registration: new Trend(
+    "endpoint_graphql_admin_get_pillar2_registration",
+  ),
+  graphqlGetTaxpayerTinDetail: new Trend(
+    "endpoint_graphql_get_taxpayer_tin_detail",
+  ),
+  rscDashboardRedirect: new Trend("endpoint_rsc_dashboard_redirect"),
+  graphqlUnknown: new Trend("endpoint_graphql_unknown"),
+};
+
+const graphqlEndpointTimings = {
+  GetUserProfile: endpointTimings.graphqlGetUserProfile,
+  GetPillar2RegistrationReport:
+    endpointTimings.graphqlGetPillar2RegistrationReport,
+  AdminGetPillar2Registration:
+    endpointTimings.graphqlAdminGetPillar2Registration,
+  GetTaxpayerTinDetail: endpointTimings.graphqlGetTaxpayerTinDetail,
 };
 
 const browserAccept =
@@ -60,11 +89,21 @@ function rscParams(nextUrl, routerStateTree, refererPath) {
 }
 
 function postGraphql(body, refererPath) {
-  return http.post(
+  const resp = http.post(
     `${BASE_URL}/api/graphql`,
     JSON.stringify(body),
     graphqlParams(refererPath),
   );
+  const metric =
+    graphqlEndpointTimings[body.operationName] || endpointTimings.graphqlUnknown;
+  metric.add(resp.timings.duration);
+  return resp;
+}
+
+function getEndpoint(metric, url, params) {
+  const resp = http.get(url, params);
+  metric.add(resp.timings.duration);
+  return resp;
 }
 
 function checkStatus(resp, expected) {
@@ -305,28 +344,17 @@ export default function () {
   http.cookieJar().set(BASE_URL, SESSION_COOKIE_NAME, SESSION_TOKEN);
 
   group("Default group", function () {
-    let resp = http.get(`${BASE_URL}/en/dashboard`, htmlParams());
+    let resp = getEndpoint(
+      endpointTimings.dashboardRedirect,
+      `${BASE_URL}/en/dashboard`,
+      htmlParams(),
+    );
     checkStatus(resp, 307);
 
-    resp = http.get(`${BASE_URL}/en/dashboard`, htmlParams());
-    checkStatus(resp, 200);
-
-    resp = postGraphql(
-      {
-        query: getUserProfileQuery,
-        operationName: "GetUserProfile",
-      },
-      "/en/dashboard",
-    );
-    checkStatus(resp, 200);
-
-    resp = postGraphql(
-      {
-        query: getPillar2RegistrationReportQuery,
-        variables: {},
-        operationName: "GetPillar2RegistrationReport",
-      },
-      "/en/dashboard",
+    resp = getEndpoint(
+      endpointTimings.dashboardPage,
+      `${BASE_URL}/en/dashboard`,
+      htmlParams(),
     );
     checkStatus(resp, 200);
 
@@ -349,7 +377,27 @@ export default function () {
     );
     checkStatus(resp, 200);
 
-    resp = http.get(
+    resp = postGraphql(
+      {
+        query: getUserProfileQuery,
+        operationName: "GetUserProfile",
+      },
+      "/en/dashboard",
+    );
+    checkStatus(resp, 200);
+
+    resp = postGraphql(
+      {
+        query: getPillar2RegistrationReportQuery,
+        variables: {},
+        operationName: "GetPillar2RegistrationReport",
+      },
+      "/en/dashboard",
+    );
+    checkStatus(resp, 200);
+
+    resp = getEndpoint(
+      endpointTimings.rscRegistrationRedirect,
       `${BASE_URL}/pillar2-registration/${REGISTRATION_ID}?_rsc=YwipAjYCJ4h8fwJj`,
       rscParams("/en/dashboard", dashboardRouterStateTree, "/en/dashboard"),
     );
@@ -375,7 +423,8 @@ export default function () {
     );
     checkStatus(resp, 200);
 
-    resp = http.get(
+    resp = getEndpoint(
+      endpointTimings.rscDashboardRedirect,
       `${BASE_URL}/dashboard?_rsc=GYqENcPqZgQESlxA`,
       rscParams(
         `/en/pillar2-registration/${REGISTRATION_ID}`,
