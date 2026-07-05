@@ -11,8 +11,8 @@ const SESSION_TOKEN = __ENV.SESSION_TOKEN || "8ZE6wW0gZe4CvcE3nBH5ZA";
 
 export const options = {
   stages: [
-    { target: 2, duration: "20s" },
-    { target: 2, duration: "20s" },
+    { target: 20, duration: "20s" },
+    { target: 20, duration: "20s" },
     { target: 0, duration: "20s" },
   ],
   summaryTrendStats: ["avg", "min", "max"],
@@ -99,10 +99,11 @@ function getPageMetric(url) {
 
 function timedRequest(method, url, body, params) {
   const resp = http.request(method, url, body, params);
+  const requestUrl = resp.url || String(url);
   const metric =
-    method === "POST" && String(url).includes("/api/graphql")
+    method === "POST" && requestUrl.includes("/api/graphql")
       ? getGraphqlMetric(body)
-      : getPageMetric(url);
+      : getPageMetric(requestUrl);
 
   metric.add(resp.timings.duration);
   return resp;
