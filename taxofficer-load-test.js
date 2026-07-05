@@ -12,11 +12,13 @@ const SESSION_TOKEN = __ENV.SESSION_TOKEN;
 const REGISTRATION_ID =
   __ENV.REGISTRATION_ID || "2F5D63D4-F176-F111-AC9A-7C1E5239240F";
 const TIN = __ENV.TIN || "5001945716";
+const THINK_TIME_MIN_SECONDS = Number(__ENV.THINK_TIME_MIN_SECONDS || 0.5);
+const THINK_TIME_MAX_SECONDS = Number(__ENV.THINK_TIME_MAX_SECONDS || 2);
 
 export const options = {
   stages: [
-    { target: 10, duration: "2m" },
-    { target: 10, duration: "3ms" },
+    { target: 20, duration: "2m" },
+    { target: 20, duration: "3ms" },
     { target: 0, duration: "2m" },
   ],
   summaryTrendStats: ["avg", "min", "med", "max", "p(90)", "p(95)"],
@@ -166,6 +168,12 @@ function checkStatus(resp, expected) {
   check(resp, {
     [`status equals ${expected}`]: (r) => r.status === expected,
   });
+}
+
+function thinkTime() {
+  const min = Math.max(0, THINK_TIME_MIN_SECONDS);
+  const max = Math.max(min, THINK_TIME_MAX_SECONDS);
+  sleep(Math.random() * (max - min) + min);
 }
 
 const getUserProfileQuery = `
@@ -405,6 +413,7 @@ export default function () {
       htmlParams(),
     );
     checkStatus(resp, 200);
+    thinkTime();
 
     resp = postGraphql(
       {
@@ -414,6 +423,7 @@ export default function () {
       "/en/dashboard",
     );
     checkStatus(resp, 200);
+    thinkTime();
 
     resp = postGraphql(
       {
@@ -424,6 +434,7 @@ export default function () {
       "/en/dashboard",
     );
     checkStatus(resp, 200);
+    thinkTime();
 
     resp = postGraphql(
       {
@@ -433,6 +444,7 @@ export default function () {
       "/en/dashboard",
     );
     checkStatus(resp, 200);
+    thinkTime();
 
     resp = postGraphql(
       {
@@ -443,6 +455,7 @@ export default function () {
       "/en/dashboard",
     );
     checkStatus(resp, 200);
+    thinkTime();
 
     resp = getEndpoint(
       endpointTimings.rscRegistrationRedirect,
@@ -460,6 +473,7 @@ export default function () {
       `/en/pillar2-registration/${REGISTRATION_ID}`,
     );
     checkStatus(resp, 200);
+    thinkTime();
 
     resp = postGraphql(
       {
@@ -470,6 +484,7 @@ export default function () {
       `/en/pillar2-registration/${REGISTRATION_ID}`,
     );
     checkStatus(resp, 200);
+    thinkTime();
 
     resp = getEndpoint(
       endpointTimings.rscDashboardRedirect,
@@ -491,7 +506,6 @@ export default function () {
       "/en/dashboard",
     );
     checkStatus(resp, 200);
+    thinkTime();
   });
-
-  sleep(1);
 }

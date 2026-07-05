@@ -8,11 +8,13 @@ import { Counter, Trend } from "k6/metrics";
 const BASE_URL = __ENV.BASE_URL || "https://taxpayer-pre-dh2.gta.gov.qa";
 const SESSION_COOKIE_NAME = __ENV.SESSION_COOKIE_NAME || "session";
 const SESSION_TOKEN = __ENV.SESSION_TOKEN || "8ZE6wW0gZe4CvcE3nBH5ZA";
+const THINK_TIME_MIN_SECONDS = Number(__ENV.THINK_TIME_MIN_SECONDS || 0.5);
+const THINK_TIME_MAX_SECONDS = Number(__ENV.THINK_TIME_MAX_SECONDS || 2);
 
 export const options = {
   stages: [
-    { target: 10, duration: "1m" },
-    { target: 10, duration: "3m30s" },
+    { target: 20, duration: "1m" },
+    { target: 20, duration: "3m30s" },
     { target: 0, duration: "1m" },
   ],
   summaryTrendStats: ["avg", "min", "med", "max", "p(90)", "p(95)"],
@@ -206,6 +208,12 @@ function checkStatus(resp, expected) {
   });
 }
 
+function thinkTime() {
+  const min = Math.max(0, THINK_TIME_MIN_SECONDS);
+  const max = Math.max(min, THINK_TIME_MAX_SECONDS);
+  sleep(Math.random() * (max - min) + min);
+}
+
 export default function () {
   let params;
   let resp;
@@ -238,6 +246,7 @@ export default function () {
     resp = timedRequest("GET", url, null, params);
 
     checkStatus(resp, 200);
+    thinkTime();
 
     params = {
       headers: {
@@ -257,6 +266,7 @@ export default function () {
     );
 
     checkStatus(resp, 200);
+    thinkTime();
 
     params = {
       headers: {
@@ -276,6 +286,7 @@ export default function () {
     );
 
     checkStatus(resp, 200);
+    thinkTime();
 
     params = {
       headers: {
@@ -295,6 +306,7 @@ export default function () {
     );
 
     checkStatus(resp, 200);
+    thinkTime();
 
     params = {
       headers: {
@@ -388,6 +400,7 @@ export default function () {
     );
 
     checkStatus(resp, 200);
+    thinkTime();
 
     params = {
       headers: {
@@ -407,6 +420,7 @@ export default function () {
     );
 
     checkStatus(resp, 200);
+    thinkTime();
 
     params = {
       headers: {
@@ -426,6 +440,7 @@ export default function () {
     );
 
     checkStatus(resp, 200);
+    thinkTime();
 
     params = {
       headers: {
@@ -445,6 +460,7 @@ export default function () {
     );
 
     checkStatus(resp, 200);
+    thinkTime();
 
     params = {
       headers: {
@@ -458,6 +474,7 @@ export default function () {
     resp = timedRequest("GET", url, null, params);
 
     checkStatus(resp, 200);
+    thinkTime();
 
     params = {
       headers: {
@@ -477,6 +494,7 @@ export default function () {
     );
 
     checkStatus(resp, 200);
+    thinkTime();
 
     params = {
       headers: {
@@ -496,6 +514,7 @@ export default function () {
     );
 
     checkStatus(resp, 200);
+    thinkTime();
 
     params = {
       headers: {
@@ -515,6 +534,7 @@ export default function () {
     );
 
     checkStatus(resp, 200);
+    thinkTime();
 
     params = {
       headers: {
@@ -608,6 +628,7 @@ export default function () {
     );
 
     checkStatus(resp, 200);
+    thinkTime();
 
     params = {
       headers: {
@@ -627,6 +648,7 @@ export default function () {
     );
 
     checkStatus(resp, 200);
+    thinkTime();
 
     params = {
       headers: {
@@ -640,6 +662,7 @@ export default function () {
     resp = timedRequest("GET", url, null, params);
 
     checkStatus(resp, 200);
+    thinkTime();
 
     params = {
       headers: {
@@ -659,6 +682,7 @@ export default function () {
     );
 
     checkStatus(resp, 200);
+    thinkTime();
 
     params = {
       headers: {
@@ -678,6 +702,7 @@ export default function () {
     );
 
     checkStatus(resp, 200);
+    thinkTime();
 
     params = {
       headers: {
@@ -697,6 +722,7 @@ export default function () {
     );
 
     checkStatus(resp, 200);
+    thinkTime();
 
     params = {
       headers: {
@@ -790,6 +816,7 @@ export default function () {
     );
 
     checkStatus(resp, 200);
+    thinkTime();
 
     params = {
       headers: {
@@ -809,6 +836,7 @@ export default function () {
     );
 
     checkStatus(resp, 200);
+    thinkTime();
 
     params = {
       headers: {
@@ -828,6 +856,7 @@ export default function () {
     );
 
     checkStatus(resp, 200);
+    thinkTime();
 
     params = {
       headers: {
@@ -847,6 +876,7 @@ export default function () {
     );
 
     checkStatus(resp, 200);
+    thinkTime();
 
     params = {
       headers: {
@@ -866,6 +896,6 @@ export default function () {
     );
 
     checkStatus(resp, 200);
+    thinkTime();
   });
-  sleep(1);
 }
