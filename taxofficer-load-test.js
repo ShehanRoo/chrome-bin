@@ -17,9 +17,9 @@ const THINK_TIME_MAX_SECONDS = Number(__ENV.THINK_TIME_MAX_SECONDS || 2);
 
 export const options = {
   stages: [
-    { target: 20, duration: "2m" },
-    { target: 20, duration: "3ms" },
-    { target: 0, duration: "2m" },
+    { target: 4, duration: "15m" },
+    { target: 4, duration: "15m" },
+    { target: 0, duration: "10m" },
   ],
   summaryTrendStats: ["avg", "min", "med", "max", "p(90)", "p(95)"],
 };
