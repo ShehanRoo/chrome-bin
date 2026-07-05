@@ -11,9 +11,9 @@ const SESSION_TOKEN = __ENV.SESSION_TOKEN || "8ZE6wW0gZe4CvcE3nBH5ZA";
 
 export const options = {
   stages: [
-    { target: 20, duration: "20s" },
-    { target: 20, duration: "20s" },
-    { target: 0, duration: "20s" },
+    { target: 20, duration: "1m" },
+    { target: 20, duration: "3m30s" },
+    { target: 0, duration: "1m" },
   ],
   summaryTrendStats: ["avg", "min", "med", "max", "p(90)", "p(95)"],
 };
