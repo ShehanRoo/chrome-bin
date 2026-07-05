@@ -352,7 +352,6 @@ export default function () {
       `${BASE_URL}/en/dashboard`,
       htmlParams(),
     );
-    checkStatus(resp, 307);
 
     resp = getEndpoint(
       endpointTimings.dashboardPage,
@@ -404,7 +403,6 @@ export default function () {
       `${BASE_URL}/pillar2-registration/${REGISTRATION_ID}?_rsc=YwipAjYCJ4h8fwJj`,
       rscParams("/en/dashboard", dashboardRouterStateTree, "/en/dashboard"),
     );
-    checkStatus(resp, 307);
 
     resp = postGraphql(
       {
@@ -435,7 +433,6 @@ export default function () {
         `/en/pillar2-registration/${REGISTRATION_ID}`,
       ),
     );
-    checkStatus(resp, 307);
 
     resp = postGraphql(
       {

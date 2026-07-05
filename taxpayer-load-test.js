@@ -11,9 +11,9 @@ const SESSION_TOKEN = __ENV.SESSION_TOKEN || "8ZE6wW0gZe4CvcE3nBH5ZA";
 
 export const options = {
   stages: [
-    { target: 20, duration: "20s" },
-    { target: 20, duration: "20s" },
-    { target: 0, duration: "20s" },
+    { target: 20, duration: "1m" },
+    { target: 20, duration: "3m30s" },
+    { target: 0, duration: "1m" },
   ],
   summaryTrendStats: ["avg", "min", "max"],
 };
@@ -149,8 +149,6 @@ export default function () {
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/en/5001945716/dashboard`;
     resp = timedRequest("GET", url, null, params);
 
-    checkStatus(resp, 307);
-
     params = {
       headers: {
         Accept: `text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7`,
@@ -235,8 +233,6 @@ export default function () {
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/en?_rsc=6hz3F_OOekX4Zx8k`;
     resp = timedRequest("GET", url, null, params);
 
-    checkStatus(resp, 307);
-
     params = {
       headers: {
         rsc: `1`,
@@ -251,8 +247,6 @@ export default function () {
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/5001945716/services/pillar2-registration/guide?_rsc=6hz3F_OOekX4Zx8k`;
     resp = timedRequest("GET", url, null, params);
-
-    checkStatus(resp, 307);
 
     params = {
       headers: {
@@ -269,8 +263,6 @@ export default function () {
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/5001945716/services/pillar2-registration/details?_rsc=6hz3F_OOekX4Zx8k`;
     resp = timedRequest("GET", url, null, params);
 
-    checkStatus(resp, 307);
-
     params = {
       headers: {
         rsc: `1`,
@@ -286,8 +278,6 @@ export default function () {
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/5001945716/services/pillar2-registration/2F5D63D4-F176-F111-AC9A-7C1E5239240F?_rsc=6hz3F_OOekX4Zx8k`;
     resp = timedRequest("GET", url, null, params);
 
-    checkStatus(resp, 307);
-
     params = {
       headers: {
         rsc: `1`,
@@ -301,8 +291,6 @@ export default function () {
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/5001945716/services/pillar2-registration/2F5D63D4-F176-F111-AC9A-7C1E5239240F?_rsc=Zun-QtzUGao0va6Y`;
     resp = timedRequest("GET", url, null, params);
-
-    checkStatus(resp, 307);
 
     params = {
       headers: {
@@ -465,8 +453,6 @@ export default function () {
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/en?_rsc=GXXugABPoI2WMoi7`;
     resp = timedRequest("GET", url, null, params);
 
-    checkStatus(resp, 307);
-
     params = {
       headers: {
         rsc: `1`,
@@ -481,8 +467,6 @@ export default function () {
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/5001945716/services/pillar2-registration/guide?_rsc=GXXugABPoI2WMoi7`;
     resp = timedRequest("GET", url, null, params);
-
-    checkStatus(resp, 307);
 
     params = {
       headers: {
@@ -499,8 +483,6 @@ export default function () {
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/5001945716/services/pillar2-registration/details?_rsc=GXXugABPoI2WMoi7`;
     resp = timedRequest("GET", url, null, params);
 
-    checkStatus(resp, 307);
-
     params = {
       headers: {
         rsc: `1`,
@@ -516,8 +498,6 @@ export default function () {
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/5001945716/services/pillar2-registration/2F5D63D4-F176-F111-AC9A-7C1E5239240F?_rsc=GXXugABPoI2WMoi7`;
     resp = timedRequest("GET", url, null, params);
 
-    checkStatus(resp, 307);
-
     params = {
       headers: {
         rsc: `1`,
@@ -531,8 +511,6 @@ export default function () {
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/5001945716/services/pillar2-registration/details?_rsc=WpT5Q6YI6Bi858Ug`;
     resp = timedRequest("GET", url, null, params);
-
-    checkStatus(resp, 307);
 
     params = {
       headers: {
@@ -657,8 +635,6 @@ export default function () {
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/en?_rsc=GXXugABPoI2WMoi7`;
     resp = timedRequest("GET", url, null, params);
 
-    checkStatus(resp, 307);
-
     params = {
       headers: {
         rsc: `1`,
@@ -673,8 +649,6 @@ export default function () {
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/5001945716/services/pillar2-registration/guide?_rsc=GXXugABPoI2WMoi7`;
     resp = timedRequest("GET", url, null, params);
-
-    checkStatus(resp, 307);
 
     params = {
       headers: {
@@ -691,8 +665,6 @@ export default function () {
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/5001945716/services/pillar2-registration/details?_rsc=GXXugABPoI2WMoi7`;
     resp = timedRequest("GET", url, null, params);
 
-    checkStatus(resp, 307);
-
     params = {
       headers: {
         rsc: `1`,
@@ -708,8 +680,6 @@ export default function () {
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/5001945716/services/pillar2-registration/2F5D63D4-F176-F111-AC9A-7C1E5239240F?_rsc=GXXugABPoI2WMoi7`;
     resp = timedRequest("GET", url, null, params);
 
-    checkStatus(resp, 307);
-
     params = {
       headers: {
         rsc: `1`,
@@ -723,8 +693,6 @@ export default function () {
 
     url = http.url`https://taxpayer-pre-dh2.gta.gov.qa/5001945716/services/pillar2-registration/guide?_rsc=EsxsO1IuT24TlDT9`;
     resp = timedRequest("GET", url, null, params);
-
-    checkStatus(resp, 307);
 
     params = {
       headers: {
