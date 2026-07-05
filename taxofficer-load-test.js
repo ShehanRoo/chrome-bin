@@ -4,7 +4,7 @@
 
 import { group, sleep, check } from "k6";
 import http from "k6/http";
-import { Trend } from "k6/metrics";
+import { Counter, Trend } from "k6/metrics";
 
 const BASE_URL = __ENV.BASE_URL || "https://taxofficer-pre-dh2.gta.gov.qa";
 const SESSION_COOKIE_NAME = __ENV.SESSION_COOKIE_NAME || "session";
@@ -43,6 +43,28 @@ const endpointTimings = {
   graphqlUnknown: new Trend("endpoint_graphql_unknown", true),
 };
 
+const endpointFailures = {
+  dashboardRedirect: new Counter("endpoint_dashboard_redirect_failures"),
+  dashboardPage: new Counter("endpoint_dashboard_page_failures"),
+  graphqlGetUserProfile: new Counter(
+    "endpoint_graphql_get_user_profile_failures",
+  ),
+  graphqlGetPillar2RegistrationReport: new Counter(
+    "endpoint_graphql_get_pillar2_registration_report_failures",
+  ),
+  rscRegistrationRedirect: new Counter(
+    "endpoint_rsc_registration_redirect_failures",
+  ),
+  graphqlAdminGetPillar2Registration: new Counter(
+    "endpoint_graphql_admin_get_pillar2_registration_failures",
+  ),
+  graphqlGetTaxpayerTinDetail: new Counter(
+    "endpoint_graphql_get_taxpayer_tin_detail_failures",
+  ),
+  rscDashboardRedirect: new Counter("endpoint_rsc_dashboard_redirect_failures"),
+  graphqlUnknown: new Counter("endpoint_graphql_unknown_failures"),
+};
+
 const graphqlEndpointTimings = {
   GetUserProfile: endpointTimings.graphqlGetUserProfile,
   GetPillar2RegistrationReport:
@@ -50,6 +72,15 @@ const graphqlEndpointTimings = {
   AdminGetPillar2Registration:
     endpointTimings.graphqlAdminGetPillar2Registration,
   GetTaxpayerTinDetail: endpointTimings.graphqlGetTaxpayerTinDetail,
+};
+
+const graphqlEndpointFailures = {
+  GetUserProfile: endpointFailures.graphqlGetUserProfile,
+  GetPillar2RegistrationReport:
+    endpointFailures.graphqlGetPillar2RegistrationReport,
+  AdminGetPillar2Registration:
+    endpointFailures.graphqlAdminGetPillar2Registration,
+  GetTaxpayerTinDetail: endpointFailures.graphqlGetTaxpayerTinDetail,
 };
 
 const browserAccept =
@@ -99,13 +130,26 @@ function postGraphql(body, refererPath) {
   );
   const metric =
     graphqlEndpointTimings[body.operationName] || endpointTimings.graphqlUnknown;
+  const failures =
+    graphqlEndpointFailures[body.operationName] ||
+    endpointFailures.graphqlUnknown;
   metric.add(resp.timings.duration);
+
+  if (resp.status >= 400) {
+    failures.add(1);
+  }
+
   return resp;
 }
 
-function getEndpoint(metric, url, params) {
+function getEndpoint(metric, failures, url, params) {
   const resp = http.get(url, params);
   metric.add(resp.timings.duration);
+
+  if (resp.status >= 400) {
+    failures.add(1);
+  }
+
   return resp;
 }
 
@@ -349,12 +393,14 @@ export default function () {
   group("Default group", function () {
     let resp = getEndpoint(
       endpointTimings.dashboardRedirect,
+      endpointFailures.dashboardRedirect,
       `${BASE_URL}/en/dashboard`,
       htmlParams(),
     );
 
     resp = getEndpoint(
       endpointTimings.dashboardPage,
+      endpointFailures.dashboardPage,
       `${BASE_URL}/en/dashboard`,
       htmlParams(),
     );
@@ -400,6 +446,7 @@ export default function () {
 
     resp = getEndpoint(
       endpointTimings.rscRegistrationRedirect,
+      endpointFailures.rscRegistrationRedirect,
       `${BASE_URL}/pillar2-registration/${REGISTRATION_ID}?_rsc=YwipAjYCJ4h8fwJj`,
       rscParams("/en/dashboard", dashboardRouterStateTree, "/en/dashboard"),
     );
@@ -426,6 +473,7 @@ export default function () {
 
     resp = getEndpoint(
       endpointTimings.rscDashboardRedirect,
+      endpointFailures.rscDashboardRedirect,
       `${BASE_URL}/dashboard?_rsc=GYqENcPqZgQESlxA`,
       rscParams(
         `/en/pillar2-registration/${REGISTRATION_ID}`,

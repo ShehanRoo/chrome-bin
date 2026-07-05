@@ -3,7 +3,7 @@
 import { group, sleep, check } from "k6";
 import http from "k6/http";
 import execution from "k6/execution";
-import { Trend } from "k6/metrics";
+import { Counter, Trend } from "k6/metrics";
 
 const BASE_URL = __ENV.BASE_URL || "https://taxpayer-pre-dh2.gta.gov.qa";
 const SESSION_COOKIE_NAME = __ENV.SESSION_COOKIE_NAME || "session";
@@ -46,24 +46,77 @@ const endpointTimings = {
   graphqlUnknown: new Trend("endpoint_graphql_unknown", true),
 };
 
-const graphqlEndpointTimings = {
-  GetTaxpayerTins: endpointTimings.graphqlGetTaxpayerTins,
-  GetTaxpayerTasks: endpointTimings.graphqlGetTaxpayerTasks,
-  WebGetTaxpayerPillar2Registrations:
-    endpointTimings.graphqlWebGetTaxpayerPillar2Registrations,
-  WebGetPillar2Registration:
-    endpointTimings.graphqlWebGetPillar2Registration,
-  GetTaxpayerTinDetail: endpointTimings.graphqlGetTaxpayerTinDetail,
-  WebGetPillar2InstructionUrl:
-    endpointTimings.graphqlWebGetPillar2InstructionUrl,
+const endpointFailures = {
+  pageDashboard: new Counter("endpoint_page_dashboard_failures"),
+  pageTaxpayerHome: new Counter("endpoint_page_taxpayer_home_failures"),
+  rscLocaleRoot: new Counter("endpoint_rsc_locale_root_failures"),
+  rscPillar2Guide: new Counter("endpoint_rsc_pillar2_guide_failures"),
+  rscPillar2Details: new Counter("endpoint_rsc_pillar2_details_failures"),
+  rscPillar2Registration: new Counter(
+    "endpoint_rsc_pillar2_registration_failures",
+  ),
+  graphqlGetTaxpayerTins: new Counter(
+    "endpoint_graphql_get_taxpayer_tins_failures",
+  ),
+  graphqlGetTaxpayerTasks: new Counter(
+    "endpoint_graphql_get_taxpayer_tasks_failures",
+  ),
+  graphqlWebGetTaxpayerPillar2Registrations: new Counter(
+    "endpoint_graphql_web_get_taxpayer_pillar2_registrations_failures",
+  ),
+  graphqlWebGetPillar2Registration: new Counter(
+    "endpoint_graphql_web_get_pillar2_registration_failures",
+  ),
+  graphqlGetTaxpayerTinDetail: new Counter(
+    "endpoint_graphql_get_taxpayer_tin_detail_failures",
+  ),
+  graphqlWebGetPillar2InstructionUrl: new Counter(
+    "endpoint_graphql_web_get_pillar2_instruction_url_failures",
+  ),
+  graphqlUnknown: new Counter("endpoint_graphql_unknown_failures"),
+};
+
+const graphqlEndpointMetrics = {
+  GetTaxpayerTins: {
+    timing: endpointTimings.graphqlGetTaxpayerTins,
+    failures: endpointFailures.graphqlGetTaxpayerTins,
+  },
+  GetTaxpayerTasks: {
+    timing: endpointTimings.graphqlGetTaxpayerTasks,
+    failures: endpointFailures.graphqlGetTaxpayerTasks,
+  },
+  WebGetTaxpayerPillar2Registrations: {
+    timing: endpointTimings.graphqlWebGetTaxpayerPillar2Registrations,
+    failures: endpointFailures.graphqlWebGetTaxpayerPillar2Registrations,
+  },
+  WebGetPillar2Registration: {
+    timing: endpointTimings.graphqlWebGetPillar2Registration,
+    failures: endpointFailures.graphqlWebGetPillar2Registration,
+  },
+  GetTaxpayerTinDetail: {
+    timing: endpointTimings.graphqlGetTaxpayerTinDetail,
+    failures: endpointFailures.graphqlGetTaxpayerTinDetail,
+  },
+  WebGetPillar2InstructionUrl: {
+    timing: endpointTimings.graphqlWebGetPillar2InstructionUrl,
+    failures: endpointFailures.graphqlWebGetPillar2InstructionUrl,
+  },
 };
 
 function getGraphqlMetric(body) {
   try {
     const operationName = JSON.parse(body).operationName;
-    return graphqlEndpointTimings[operationName] || endpointTimings.graphqlUnknown;
+    return (
+      graphqlEndpointMetrics[operationName] || {
+        timing: endpointTimings.graphqlUnknown,
+        failures: endpointFailures.graphqlUnknown,
+      }
+    );
   } catch (error) {
-    return endpointTimings.graphqlUnknown;
+    return {
+      timing: endpointTimings.graphqlUnknown,
+      failures: endpointFailures.graphqlUnknown,
+    };
   }
 }
 
@@ -72,30 +125,48 @@ function getPageMetric(url) {
   const path = rawPath.startsWith("/en/") ? rawPath.slice(3) : rawPath;
 
   if (path === "/5001945716/dashboard") {
-    return endpointTimings.pageDashboard;
+    return {
+      timing: endpointTimings.pageDashboard,
+      failures: endpointFailures.pageDashboard,
+    };
   }
 
   if (path === "/5001945716") {
-    return endpointTimings.pageTaxpayerHome;
+    return {
+      timing: endpointTimings.pageTaxpayerHome,
+      failures: endpointFailures.pageTaxpayerHome,
+    };
   }
 
   if (rawPath === "/en") {
-    return endpointTimings.rscLocaleRoot;
+    return {
+      timing: endpointTimings.rscLocaleRoot,
+      failures: endpointFailures.rscLocaleRoot,
+    };
   }
 
   if (path === "/5001945716/services/pillar2-registration/guide") {
-    return endpointTimings.rscPillar2Guide;
+    return {
+      timing: endpointTimings.rscPillar2Guide,
+      failures: endpointFailures.rscPillar2Guide,
+    };
   }
 
   if (path === "/5001945716/services/pillar2-registration/details") {
-    return endpointTimings.rscPillar2Details;
+    return {
+      timing: endpointTimings.rscPillar2Details,
+      failures: endpointFailures.rscPillar2Details,
+    };
   }
 
   if (
     path ===
     "/5001945716/services/pillar2-registration/2F5D63D4-F176-F111-AC9A-7C1E5239240F"
   ) {
-    return endpointTimings.rscPillar2Registration;
+    return {
+      timing: endpointTimings.rscPillar2Registration,
+      failures: endpointFailures.rscPillar2Registration,
+    };
   }
 
   return null;
@@ -104,13 +175,17 @@ function getPageMetric(url) {
 function timedRequest(method, url, body, params) {
   const resp = http.request(method, url, body, params);
   const requestUrl = resp.url || String(url);
-  const metric =
+  const endpointMetric =
     method === "POST" && requestUrl.includes("/api/graphql")
       ? getGraphqlMetric(body)
       : getPageMetric(requestUrl);
 
-  if (metric) {
-    metric.add(resp.timings.duration);
+  if (endpointMetric) {
+    endpointMetric.timing.add(resp.timings.duration);
+
+    if (resp.status >= 400) {
+      endpointMetric.failures.add(1);
+    }
   }
 
   return resp;
