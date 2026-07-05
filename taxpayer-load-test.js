@@ -11,36 +11,40 @@ const SESSION_TOKEN = __ENV.SESSION_TOKEN || "8ZE6wW0gZe4CvcE3nBH5ZA";
 
 export const options = {
   stages: [
-    { target: 20, duration: "20s" },
-    { target: 20, duration: "20s" },
-    { target: 0, duration: "20s" },
+    { target: 20, duration: "1m" },
+    { target: 20, duration: "3m30s" },
+    { target: 0, duration: "1m" },
   ],
   summaryTrendStats: ["avg", "min", "max"],
 };
 
 const endpointTimings = {
-  pageDashboard: new Trend("endpoint_page_dashboard"),
-  pageTaxpayerHome: new Trend("endpoint_page_taxpayer_home"),
-  rscLocaleRoot: new Trend("endpoint_rsc_locale_root"),
-  rscPillar2Guide: new Trend("endpoint_rsc_pillar2_guide"),
-  rscPillar2Details: new Trend("endpoint_rsc_pillar2_details"),
-  rscPillar2Registration: new Trend("endpoint_rsc_pillar2_registration"),
-  graphqlGetTaxpayerTins: new Trend("endpoint_graphql_get_taxpayer_tins"),
-  graphqlGetTaxpayerTasks: new Trend("endpoint_graphql_get_taxpayer_tasks"),
+  pageDashboard: new Trend("endpoint_page_dashboard", true),
+  pageTaxpayerHome: new Trend("endpoint_page_taxpayer_home", true),
+  rscLocaleRoot: new Trend("endpoint_rsc_locale_root", true),
+  rscPillar2Guide: new Trend("endpoint_rsc_pillar2_guide", true),
+  rscPillar2Details: new Trend("endpoint_rsc_pillar2_details", true),
+  rscPillar2Registration: new Trend("endpoint_rsc_pillar2_registration", true),
+  graphqlGetTaxpayerTins: new Trend("endpoint_graphql_get_taxpayer_tins", true),
+  graphqlGetTaxpayerTasks: new Trend("endpoint_graphql_get_taxpayer_tasks", true),
   graphqlWebGetTaxpayerPillar2Registrations: new Trend(
     "endpoint_graphql_web_get_taxpayer_pillar2_registrations",
+    true,
   ),
   graphqlWebGetPillar2Registration: new Trend(
     "endpoint_graphql_web_get_pillar2_registration",
+    true,
   ),
   graphqlGetTaxpayerTinDetail: new Trend(
     "endpoint_graphql_get_taxpayer_tin_detail",
+    true,
   ),
   graphqlWebGetPillar2InstructionUrl: new Trend(
     "endpoint_graphql_web_get_pillar2_instruction_url",
+    true,
   ),
-  graphqlUnknown: new Trend("endpoint_graphql_unknown"),
-  other: new Trend("endpoint_other"),
+  graphqlUnknown: new Trend("endpoint_graphql_unknown", true),
+  other: new Trend("endpoint_other", true),
 };
 
 const graphqlEndpointTimings = {

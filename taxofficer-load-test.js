@@ -23,21 +23,24 @@ export const options = {
 };
 
 const endpointTimings = {
-  dashboardRedirect: new Trend("endpoint_dashboard_redirect"),
-  dashboardPage: new Trend("endpoint_dashboard_page"),
-  graphqlGetUserProfile: new Trend("endpoint_graphql_get_user_profile"),
+  dashboardRedirect: new Trend("endpoint_dashboard_redirect", true),
+  dashboardPage: new Trend("endpoint_dashboard_page", true),
+  graphqlGetUserProfile: new Trend("endpoint_graphql_get_user_profile", true),
   graphqlGetPillar2RegistrationReport: new Trend(
     "endpoint_graphql_get_pillar2_registration_report",
+    true,
   ),
-  rscRegistrationRedirect: new Trend("endpoint_rsc_registration_redirect"),
+  rscRegistrationRedirect: new Trend("endpoint_rsc_registration_redirect", true),
   graphqlAdminGetPillar2Registration: new Trend(
     "endpoint_graphql_admin_get_pillar2_registration",
+    true,
   ),
   graphqlGetTaxpayerTinDetail: new Trend(
     "endpoint_graphql_get_taxpayer_tin_detail",
+    true,
   ),
-  rscDashboardRedirect: new Trend("endpoint_rsc_dashboard_redirect"),
-  graphqlUnknown: new Trend("endpoint_graphql_unknown"),
+  rscDashboardRedirect: new Trend("endpoint_rsc_dashboard_redirect", true),
+  graphqlUnknown: new Trend("endpoint_graphql_unknown", true),
 };
 
 const graphqlEndpointTimings = {
