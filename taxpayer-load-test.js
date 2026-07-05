@@ -11,11 +11,11 @@ const SESSION_TOKEN = __ENV.SESSION_TOKEN || "8ZE6wW0gZe4CvcE3nBH5ZA";
 
 export const options = {
   stages: [
-    { target: 20, duration: "1m" },
-    { target: 20, duration: "3m30s" },
-    { target: 0, duration: "1m" },
+    { target: 20, duration: "20s" },
+    { target: 20, duration: "20s" },
+    { target: 0, duration: "20s" },
   ],
-  summaryTrendStats: ["avg", "min", "max"],
+  summaryTrendStats: ["avg", "min", "med", "max", "p(90)", "p(95)"],
 };
 
 const endpointTimings = {
@@ -44,7 +44,6 @@ const endpointTimings = {
     true,
   ),
   graphqlUnknown: new Trend("endpoint_graphql_unknown", true),
-  other: new Trend("endpoint_other", true),
 };
 
 const graphqlEndpointTimings = {
@@ -69,9 +68,10 @@ function getGraphqlMetric(body) {
 }
 
 function getPageMetric(url) {
-  const path = String(url).replace(BASE_URL, "").split("?")[0];
+  const rawPath = String(url).replace(BASE_URL, "").split("?")[0];
+  const path = rawPath.startsWith("/en/") ? rawPath.slice(3) : rawPath;
 
-  if (path === "/en/5001945716/dashboard") {
+  if (path === "/5001945716/dashboard") {
     return endpointTimings.pageDashboard;
   }
 
@@ -79,7 +79,7 @@ function getPageMetric(url) {
     return endpointTimings.pageTaxpayerHome;
   }
 
-  if (path === "/en") {
+  if (rawPath === "/en") {
     return endpointTimings.rscLocaleRoot;
   }
 
@@ -98,7 +98,7 @@ function getPageMetric(url) {
     return endpointTimings.rscPillar2Registration;
   }
 
-  return endpointTimings.other;
+  return null;
 }
 
 function timedRequest(method, url, body, params) {
@@ -109,7 +109,10 @@ function timedRequest(method, url, body, params) {
       ? getGraphqlMetric(body)
       : getPageMetric(requestUrl);
 
-  metric.add(resp.timings.duration);
+  if (metric) {
+    metric.add(resp.timings.duration);
+  }
+
   return resp;
 }
 

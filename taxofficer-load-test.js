@@ -19,7 +19,7 @@ export const options = {
     { target: 20, duration: "3ms" },
     { target: 0, duration: "2m" },
   ],
-  summaryTrendStats: ["avg", "min", "max"],
+  summaryTrendStats: ["avg", "min", "med", "max", "p(90)", "p(95)"],
 };
 
 const endpointTimings = {
