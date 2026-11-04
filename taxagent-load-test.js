@@ -27,9 +27,9 @@ if (!SESSION_TOKEN) {
 
 export const options = {
   stages: [
-    { target: 5, duration: "1m" },
-    { target: 5, duration: "1m" },
-    { target: 0, duration: "1m" },
+   { target: 20, duration: "15m" },
+    { target: 20, duration: "15m" },
+    { target: 0, duration: "10m" },
   ],
   summaryTrendStats: ["avg", "min", "med", "max", "p(90)", "p(95)"],
 };
